@@ -1,0 +1,407 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Birthday Zainab ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #ff9a9e 0%, #fad0c4 35%, #1a0b20 100%);
+      color: white;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    /* Main container */
+    .container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px 15px;
+      position: relative;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 650px;
+      padding: 45px 30px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      animation: appear 1.5s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .cake {
+      font-size: 75px;
+      animation: bounce 2s infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .small-title {
+      font-size: 18px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    h1 {
+      font-size: clamp(42px, 10vw, 75px);
+      margin: 12px 0;
+      color: #fff;
+      text-shadow:
+        0 0 10px #ff4f81,
+        0 0 25px #ff4f81,
+        0 0 50px #ff4f81;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow:
+          0 0 10px #ff4f81,
+          0 0 20px #ff4f81;
+      }
+
+      to {
+        text-shadow:
+          0 0 15px #fff,
+          0 0 35px #ff4f81,
+          0 0 60px #ff4f81;
+      }
+    }
+
+    .subtitle {
+      font-size: clamp(20px, 5vw, 28px);
+      margin-bottom: 25px;
+      color: #ffe1ea;
+    }
+
+    .message {
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 20px auto;
+      max-width: 550px;
+      color: #fff5f8;
+    }
+
+    .heart {
+      color: #ff477e;
+      animation: heartbeat 1.2s infinite;
+      display: inline-block;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.35);
+      }
+    }
+
+    .wish-box {
+      margin: 30px auto;
+      padding: 22px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .wish-box p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    button {
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 65, 108, 0.4);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 35px rgba(255, 65, 108, 0.7);
+    }
+
+    #secretMessage {
+      display: none;
+      margin-top: 25px;
+      font-size: 21px;
+      color: #fff;
+      animation: appear 1s ease;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* Floating hearts */
+    .floating-heart {
+      position: fixed;
+      bottom: -50px;
+      font-size: 25px;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 15px;
+      top: -20px;
+      z-index: 999;
+      pointer-events: none;
+      animation: confettiFall linear forwards;
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+
+      .card {
+        padding: 35px 20px;
+        border-radius: 25px;
+      }
+
+      .cake {
+        font-size: 60px;
+      }
+
+      .small-title {
+        font-size: 14px;
+        letter-spacing: 2px;
+      }
+
+      .message,
+      .wish-box p {
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="card">
+
+      <div class="cake">🎂</div>
+
+      <div class="small-title">
+        A Special Day For Someone Special
+      </div>
+
+      <h1>Zainab</h1>
+
+      <div class="subtitle">
+        Happy Birthday, My Love <span class="heart">❤️</span>
+      </div>
+
+      <p class="message">
+        Today is not just another day...
+        it's the day someone truly special came into this world.
+        <br><br>
+
+        Zainab, you bring happiness, warmth and beautiful moments
+        into my life. I hope your birthday is filled with everything
+        that makes you smile. 💕
+      </p>
+
+      <div class="wish-box">
+        <p>
+          🌸 May your dreams come true.<br>
+          ✨ May your smile always shine.<br>
+          💕 May you always be surrounded by happiness.<br>
+          🎂 And may this birthday be one you'll never forget.
+        </p>
+      </div>
+
+      <button onclick="showLove()">
+        💖 Click For A Surprise
+      </button>
+
+      <div id="secretMessage">
+        Zainab, you're one of the most beautiful parts of my life. ❤️
+        <br>
+        Happy Birthday once again! 🎉🎂
+        <br><br>
+        <strong>With lots of love ❤️</strong>
+      </div>
+
+      <div class="footer">
+        Made with ❤️ especially for Zainab
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    // Confetti animation
+    function createConfetti() {
+
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+
+      const shapes = ["🎉", "✨", "💖", "🎊", "💕", "⭐"];
+
+      confetti.innerHTML =
+        shapes[Math.floor(Math.random() * shapes.length)];
+
+      confetti.style.left =
+        Math.random() * 100 + "vw";
+
+      confetti.style.fontSize =
+        (Math.random() * 15 + 10) + "px";
+
+      confetti.style.animationDuration =
+        (Math.random() * 3 + 2) + "s";
+
+      document.body.appendChild(confetti);
+
+      setTimeout(() => {
+        confetti.remove();
+      }, 5000);
+    }
+
+    // Start confetti automatically
+    setInterval(createConfetti, 120);
+
+    // Surprise button
+    function showLove() {
+
+      const message =
+        document.getElementById("secretMessage");
+
+      message.style.display = "block";
+
+      // Extra celebration
+      for (let i = 0; i < 40; i++) {
+        setTimeout(createConfetti, i * 40);
+      }
+
+      // Create hearts
+      for (let i = 0; i < 15; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    }
+
+    // Floating hearts
+    function createHeart() {
+
+      const heart =
+        document.createElement("div");
+
+      heart.classList.add("floating-heart");
+
+      heart.innerHTML =
+        Math.random() > 0.5 ? "❤️" : "💕";
+
+      heart.style.left =
+        Math.random() * 100 + "vw";
+
+      heart.style.fontSize =
+        (Math.random() * 25 + 15) + "px";
+
+      heart.style.animationDuration =
+        (Math.random() * 4 + 4) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    // Continuous hearts
+    setInterval(createHeart, 700);
+
+  </script>
+
+</body>
+</html>
+```
